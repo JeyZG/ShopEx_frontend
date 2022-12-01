@@ -1,5 +1,5 @@
 import React , { Fragment, useState, useEffect } from 'react';
-import { useAlert } from 'react-alert';
+import { toast as alert } from 'react-hot-toast'
 import { useDispatch, useSelector } from 'react-redux';
 import MetaData from '../layout/MetaData';
 import { register, clearErrors } from "../../actions/userActions";
@@ -16,9 +16,7 @@ export const Register = () => {
 	
 	// Variable para usar el useNavigate
 	const navigate = useNavigate();
-    // Variable para usar el useAlert
-	const alert = useAlert();
-	// Variable para usar el useDispatch
+    // Variable para usar el useDispatch
     const dispatch = useDispatch();
 	
 
@@ -35,7 +33,7 @@ export const Register = () => {
         if (error) {
             dispatch(clearErrors)
         }
-    }, [dispatch, isAuthenticated, error, alert, navigate])
+    }, [dispatch, isAuthenticated, error, navigate])
 
     const submitHandler = (e) => {
         
@@ -47,6 +45,7 @@ export const Register = () => {
         formData.set("avatar", avatar)
 
         dispatch(register(formData));
+		alert.success("Usuario creado exitosamente!")
     }
 
     const onChange = e => {

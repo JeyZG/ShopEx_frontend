@@ -4,7 +4,7 @@ import { MDBCard, MDBCardBody, MDBCardHeader, MDBCardTitle, MDBDataTable } from 
 //import { MDBDatatable } from 'mdb-react-ui-kit';
 import MetaData from '../layout/MetaData'
 import Sidebar from './Sidebar'
-import { useAlert } from 'react-alert'
+import {toast as alert} from 'react-hot-toast'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from "react-router-dom"
 import { clearErrors, deleteProduct, getAdminProducts } from '../../actions/productsActions'
@@ -12,7 +12,6 @@ import { clearErrors, deleteProduct, getAdminProducts } from '../../actions/prod
 
 export const ProductsList = () => {
     
-    const alert= useAlert();
     const dispatch = useDispatch();
 
     const { loading, products, error} = useSelector(state=> state.products)
@@ -36,7 +35,7 @@ export const ProductsList = () => {
             dispatch(clearErrors());
         }
 
-    }, [dispatch, alert, error])
+    }, [dispatch, error])
 
     const setProducts = () => {
         const data = {

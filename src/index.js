@@ -5,24 +5,11 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import { Provider } from "react-redux";
 import store from "./store";
-import { positions, transitions, Provider as AlertProvider } from "react-alert";
-import AlertTemplate from "react-alert-template-basic";
 import { Toaster } from 'react-hot-toast';
-
-// Configuracion de opciones para mostrar mensaje de alerta en pantalla
-const options = {
-  timeout: 4000,
-  position: positions.TOP_CENTER,
-  transitions: transitions.FADE,
-  offset: '20px'
-  
-}
-
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
-	<AlertProvider template={AlertTemplate} {...options}>
 	<Toaster
 		position="top-center"
 		reverseOrder={false}
@@ -50,6 +37,6 @@ root.render(
 		}}
 		/>
 	  <App />
-	</AlertProvider>
+	
   </Provider>
 );

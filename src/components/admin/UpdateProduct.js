@@ -1,11 +1,11 @@
 import React, { Fragment, useEffect, useState } from "react";
 import MetaData from "../layout/MetaData";
 import Sidebar from "./Sidebar";
-import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, getProductDetails, updateProduct } from "../../actions/productsActions";
 import { UPDATE_PRODUCT_RESET } from "../../constants/productsConstants";
 import { useNavigate, useParams } from "react-router-dom";
+import {toast as alert} from 'react-hot-toast'
 
 export const UpdateProduct = () => {
 	
@@ -32,7 +32,7 @@ export const UpdateProduct = () => {
         "Zona gamer"
     ];
 
-	const alert = useAlert();
+	
 	const dispatch = useDispatch();
 
 	const { loading, isUpdated,  error: updateError } = useSelector((state) => state.product);
@@ -71,7 +71,7 @@ export const UpdateProduct = () => {
 				type: UPDATE_PRODUCT_RESET 
 			});
 		}
-	}, [dispatch, alert, error, isUpdated, updateError, product, productId, navigate]);
+	}, [dispatch, error, isUpdated, updateError, product, productId, navigate]);
 
 	const submitHandler = (e) => {
 		e.preventDefault();

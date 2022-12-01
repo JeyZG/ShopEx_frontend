@@ -1,12 +1,11 @@
 import React, { Fragment, useState, useEffect } from 'react'
 import MetaData from '../layout/MetaData'
 import Sidebar from './Sidebar'
-import { useAlert } from 'react-alert'
 import { useDispatch, useSelector } from 'react-redux'
 import { newProduct, clearErrors } from '../../actions/productsActions'
 import { NEW_PRODUCT_RESET } from '../../constants/productsConstants'
 import { useNavigate } from 'react-router-dom'
-
+import {toast as alert} from 'react-hot-toast'
 
 const NewProduct = () => {
 
@@ -30,7 +29,6 @@ const NewProduct = () => {
         "Zona gamer"
     ]
 
-    const alert = useAlert();
     const dispatch = useDispatch();
     
     const {loading, error, success} = useSelector(state => state.newProduct)
@@ -46,7 +44,7 @@ const NewProduct = () => {
             alert.success("Producto registrado con exito!")
             dispatch({type: NEW_PRODUCT_RESET})
         }
-    }, [dispatch, error, success, alert, navigate])
+    }, [dispatch, error, success, navigate])
 
     const submitHandler = (e) => {
         e.preventDefault();

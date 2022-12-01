@@ -3,8 +3,7 @@ import { MDBCard, MDBCardBody, MDBCardHeader, MDBCardTitle, MDBDataTable } from 
 
 import MetaData from '../layout/MetaData'
 import Sidebar from './Sidebar'
-
-import { useAlert } from 'react-alert'
+import {toast as alert} from 'react-hot-toast'
 import { useDispatch, useSelector } from 'react-redux'
 import { getProductReviews, deleteReview, clearErrors } from '../../actions/productsActions'
 import { DELETE_REVIEW_RESET } from '../../constants/productsConstants'
@@ -13,7 +12,6 @@ export const ProductReviews = () => {
 
     const [productId, setProductId] = useState('')
 
-    const alert = useAlert();
     const dispatch = useDispatch();
 
     const { error, opiniones } = useSelector(state => state.productReviews);
@@ -41,7 +39,7 @@ export const ProductReviews = () => {
 
 
 
-    }, [dispatch, alert, error, productId, isDeleted, deleteError])
+    }, [dispatch, error, productId, isDeleted, deleteError])
 
     const deleteReviewHandler = (id) => {
         dispatch(deleteReview(id, productId))

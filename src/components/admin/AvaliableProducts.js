@@ -2,14 +2,14 @@ import React, { Fragment, useEffect } from 'react'
 import { MDBCard, MDBCardBody, MDBCardHeader, MDBCardTitle, MDBDataTable } from 'mdbreact'
 import MetaData from '../layout/MetaData'
 import Sidebar from './Sidebar'
-import { useAlert } from 'react-alert'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from "react-router-dom"
 import {getAvaliableProducts} from '../../actions/productsActions'
+import {toast as alert} from 'react-hot-toast'
 
 export const AvaliableProducts = () => {
     const { loading, avaliableProducts, error} = useSelector( state => state.avaliableProducts)
-    const alert = useAlert();
+    //const alert = useAlert();
     const dispatch = useDispatch();
 
     useEffect( () => {
@@ -19,7 +19,7 @@ export const AvaliableProducts = () => {
         }
 
         dispatch(getAvaliableProducts())
-    }, [dispatch, alert, error])
+    }, [dispatch, error])
 
     const setProducts = () => {
         const data = {

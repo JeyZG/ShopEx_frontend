@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import MetaData from "../layout/MetaData"
 import { useParams } from 'react-router-dom'
 import { getProductDetails, clearErrors} from '../../actions/productsActions'
-import { useAlert} from 'react-alert'
+import { toast as alert } from 'react-hot-toast'
 import { Carousel } from 'react-bootstrap'
 
 
@@ -12,7 +12,6 @@ export const ProductEdit = () => {
 	const {loading, product, error} = useSelector(state => state.productDetails)
 	const {id} =useParams();
 	const dispatch= useDispatch();
-	const alert= useAlert();
 	
 	useEffect( () => {
 	
@@ -23,7 +22,7 @@ export const ProductEdit = () => {
 			dispatch(clearErrors())
 		}
 
-	}, [dispatch, alert, error, id])
+	}, [dispatch, error, id])
 
 	return (
 		<Fragment>

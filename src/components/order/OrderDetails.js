@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from 'react'
-import { useAlert } from 'react-alert';
+import { toast as alert } from 'react-hot-toast'
 import CurrencyFormat from 'react-currency-format';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams, Link } from 'react-router-dom'
@@ -9,7 +9,6 @@ import MetaData from '../layout/MetaData'
 export const OrderDetails = () => {
     const navigate=useNavigate();
     const params= useParams();
-    const alert= useAlert();
     const dispatch= useDispatch();
     const {loading, error, order={}}= useSelector(state=> state.orderDetails)
     const { envioInfo, items, pagoInfo, user, precioTotal, estado} = order
@@ -20,7 +19,7 @@ export const OrderDetails = () => {
             alert.error(error)
             dispatch(clearErrors)
         }
-    },[dispatch, alert, error, params.id])
+    },[dispatch, error, params.id])
     const detalleEnvio= envioInfo && `${envioInfo.direccion}, ${envioInfo.ciudad}, ${envioInfo.departamento}`
 
 

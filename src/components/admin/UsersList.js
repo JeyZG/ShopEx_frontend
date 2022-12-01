@@ -4,15 +4,13 @@ import { MDBCard, MDBCardBody, MDBCardHeader, MDBCardTitle, MDBDataTable } from 
 
 import MetaData from '../layout/MetaData'
 import Sidebar from './Sidebar'
-
-import { useAlert } from 'react-alert'
+import {toast as alert} from 'react-hot-toast'
 import { useDispatch, useSelector } from 'react-redux'
 import { allUsers, deleteUser, clearErrors } from '../../actions/userActions'
 import { DELETE_USER_RESET } from '../../constants/userConstants'
 
 const UsersList = () => {
     const navigate=useNavigate();
-    const alert = useAlert();
     const dispatch = useDispatch();
 
     const { loading, error, users } = useSelector(state => state.allUsers);
@@ -32,7 +30,7 @@ const UsersList = () => {
             dispatch({ type: DELETE_USER_RESET })
         }
 
-    }, [dispatch, alert, error, isDeleted, navigate])
+    }, [dispatch, error, isDeleted, navigate])
 
     const deleteUserHandler = (id) => {
         dispatch(deleteUser(id))

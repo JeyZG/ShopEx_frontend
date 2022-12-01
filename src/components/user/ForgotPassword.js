@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect } from 'react'
 import MetaData from '../layout/MetaData'
-import { useAlert } from 'react-alert'
+import { toast as alert } from 'react-hot-toast'
 import { useDispatch, useSelector } from 'react-redux'
 import { forgotPassword, clearErrors } from '../../actions/userActions'
 import { useNavigate } from 'react-router-dom'
@@ -8,7 +8,6 @@ import { useNavigate } from 'react-router-dom'
 export const ForgotPassword = () => {
 
     const [email, setEmail] = useState('')
-    const alert = useAlert();
     const dispatch = useDispatch();
     const { error, loading, message } = useSelector(state => state.forgotPassword)
     const navigate = useNavigate();
@@ -24,7 +23,7 @@ export const ForgotPassword = () => {
             alert.success(message)
         }
 
-    }, [dispatch, alert, error, message])
+    }, [dispatch, error, message])
 
     const submitHandler = (e) => {
         e.preventDefault();

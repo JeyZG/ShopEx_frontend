@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import MetaData from "../layout/MetaData"
 import { useNavigate } from "react-router-dom"
-import { useAlert } from "react-alert"
+import { toast as alert } from 'react-hot-toast'
 import { useDispatch, useSelector } from "react-redux"
 import { updateProfile, loadUser, clearErrors } from '../../actions/userActions'
 import { UPDATE_PROFILE_RESET } from '../../constants/userConstants'
@@ -13,7 +13,6 @@ export const UpdateProfile = () => {
     const [email, setEmail] = useState("")
     const [avatar, setAvatar] = useState("");
     const [avatarPreview, setAvatarPreview] = useState("")
-    const alert = useAlert();
     const dispatch = useDispatch();
 
     const { user } = useSelector(state => state.auth)
@@ -40,7 +39,7 @@ export const UpdateProfile = () => {
                 type: UPDATE_PROFILE_RESET
             })
         }
-    }, [dispatch, alert, error, isUpdated, navigate, user])
+    }, [dispatch, error, isUpdated, navigate, user])
 
     const submitHandler = (e) => {
         e.preventDefault();

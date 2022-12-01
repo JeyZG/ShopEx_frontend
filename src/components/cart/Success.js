@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import MetaData from '../layout/MetaData'
 
-
 export const Success = () => {
 
     const { loading } = useSelector( state => state.newOrder)

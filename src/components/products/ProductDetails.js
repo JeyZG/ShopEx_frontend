@@ -4,7 +4,7 @@ import MetaData from "../layout/MetaData"
 import { useParams, useNavigate } from 'react-router-dom'
 import { getProductDetails, newReview, clearErrors} from '../../actions/productsActions'
 import { NEW_REVIEW_RESET } from '../../constants/productsConstants'
-import { useAlert} from 'react-alert'
+import { toast as alert } from 'react-hot-toast'
 import { Carousel } from 'react-bootstrap'
 import { addItemToCart } from '../../actions/cartActions'
 import CurrencyFormat from 'react-currency-format'
@@ -18,8 +18,7 @@ export const ProductDetails = () => {
     const [comentario, setComentario] = useState('');
 
     const dispatch = useDispatch();
-    const alert = useAlert();
-
+    
     const { loading, error, product } = useSelector(state => state.productDetails)
     const { user } = useSelector(state => state.auth)
     const { error: reviewError, success } = useSelector(state => state.newReview)
@@ -42,7 +41,7 @@ export const ProductDetails = () => {
             dispatch({ type: NEW_REVIEW_RESET })
         }
 	
-	}, [dispatch, alert, error, reviewError, params.id, success])
+	}, [dispatch, error, reviewError, params.id, success])
 
 	const increaseQty = () => {
 		const contador = document.querySelector('.count')

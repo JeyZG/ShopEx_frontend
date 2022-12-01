@@ -2,14 +2,13 @@ import React, { Fragment, useEffect } from 'react'
 import { MDBCard, MDBCardBody, MDBCardHeader, MDBCardTitle, MDBDataTable } from 'mdbreact'
 import MetaData from '../layout/MetaData'
 import Sidebar from './Sidebar'
-import { useAlert } from 'react-alert'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from "react-router-dom"
 import {getOutOfStockProducts} from '../../actions/productsActions'
+import {toast as alert} from 'react-hot-toast'
 
 export const OutOfStockProducts = () => {
     const { loading, outOfStockProducts, error} = useSelector( state => state.outOfStockProducts)
-    const alert = useAlert();
     const dispatch = useDispatch();
 
     useEffect( () => {
@@ -20,7 +19,7 @@ export const OutOfStockProducts = () => {
             return alert.error(error)
         }
 
-    }, [dispatch, alert, error])
+    }, [dispatch, error])
 
     const setProducts = () => {
         const data = {

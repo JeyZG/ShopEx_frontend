@@ -4,13 +4,12 @@ import { useNavigate } from 'react-router-dom'
 import uuid from "react-native-uuid"
 import { clearErrors, createOrder } from '../../actions/orderActions';
 import MetaData from '../layout/MetaData';
-import { useAlert } from 'react-alert';
+import {toast as alert} from 'react-hot-toast'
 import CheckoutSteps from './CheckOutSteps';
 import CurrencyFormat from 'react-currency-format'
 
 export const Payment = () => {
     const navigate= useNavigate();
-    const alert= useAlert();
     const dispatch= useDispatch();
     const id= uuid.v4()
     const {cartItems, shippingInfo} = useSelector(state => state.cart)
@@ -21,7 +20,7 @@ export const Payment = () => {
             alert.error(error)
             dispatch(clearErrors)
         }
-    },[dispatch, alert, error])
+    },[dispatch, error])
 
     let items=[];
 
@@ -58,11 +57,11 @@ export const Payment = () => {
         try{
             dispatch(createOrder(order))
             localStorage.removeItem("cartItems")
-            window.alert("Orden registrada correctamente")
+            alert.success("Orden registrada correctamente")
             navigate("/success")
-            //window.location.reload(false)
+            window.location.reload(false)
         }catch(error){
-            window.alert("No se logró registrar la compra")
+            alert.error("No se logró registrar la compra")
         }
     }
 

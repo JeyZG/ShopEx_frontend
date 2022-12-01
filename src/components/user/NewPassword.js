@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react'
 import MetaData from '../layout/MetaData'
 import { useParams, useNavigate } from 'react-router-dom'
-import { useAlert } from 'react-alert'
+import { toast as alert } from 'react-hot-toast'
 import { useDispatch, useSelector } from 'react-redux'
 import { resetPassword, clearErrors } from '../../actions/userActions'
 
@@ -11,7 +11,6 @@ export const NewPassword = () => {
     const [confirmPassword, setConfirmPassword] = useState('')
     const params=useParams();
     const navigate=useNavigate();
-    const alert = useAlert();
     const dispatch = useDispatch();
 
     const { error, success } = useSelector(state => state.forgotPassword)
@@ -28,7 +27,7 @@ export const NewPassword = () => {
             navigate('/login')
         }
 
-    }, [dispatch, alert, error, success, navigate])
+    }, [dispatch, error, success, navigate])
 
     const submitHandler = (e) => {
         e.preventDefault();

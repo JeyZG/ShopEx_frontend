@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react'
-import { useAlert } from 'react-alert'
+import { toast as alert } from 'react-hot-toast'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { clearErrors, updatePassword } from '../../actions/userActions'
@@ -10,7 +10,6 @@ export const UpdatePassword = () => {
     const [oldPassword, setOldPassword] = useState("")
     const [newPassword, setNewPassword] = useState("")
     const navigate = useNavigate();
-    const alert = useAlert();
     const dispatch = useDispatch();
 
     const {error, isUpdated, loading} = useSelector(state => state.user)
@@ -29,7 +28,7 @@ export const UpdatePassword = () => {
                 type: UPDATE_PASSWORD_RESET
             })
         }
-    },[dispatch, alert, error, isUpdated, navigate])
+    },[dispatch, error, isUpdated, navigate])
 
 const submitHandler = (e) => {
     e.preventDefault();

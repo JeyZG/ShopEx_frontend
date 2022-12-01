@@ -3,12 +3,11 @@ import "../../App.css"
 import { Link } from "react-router-dom"
 import Search from './Search'
 import { useDispatch, useSelector } from 'react-redux'
-import { useAlert } from 'react-alert'
+import { toast as alert } from 'react-hot-toast'
 import { logoutUser } from '../../actions/userActions'
 
 const Header = () => {
     const {cartItems} = useSelector(state => state.cart)
-    const alert = useAlert();
     const dispatch = useDispatch();
 
     const { user, loading } = useSelector( state => state.auth )

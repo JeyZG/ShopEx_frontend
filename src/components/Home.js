@@ -3,7 +3,7 @@ import MetaData from './layout/MetaData'
 import { useDispatch, useSelector } from 'react-redux'
 import { getProducts } from '../actions/productsActions'
 import { Link, useParams } from 'react-router-dom'
-import { useAlert } from 'react-alert'
+import { toast as alert } from 'react-hot-toast'
 import Pagination from 'react-js-pagination'
 import Slider from 'rc-slider' // Documentacion: https://www.npmjs.com/package/rc-slider
 import 'rc-slider/assets/index.css'
@@ -17,9 +17,7 @@ export const Home = () => {
 	const [precio, setPrecio]= useState([5000,500000])
 	const [currentPage, setCurrentPage] = useState(1)
 	const { loading, products, error, resPerPage, productsCount } = useSelector( state => state.products)
-	const alert = useAlert();
 	
-
 	const dispatch = useDispatch();
 	useEffect( () => {
 
@@ -28,7 +26,7 @@ export const Home = () => {
 		}
 
 		dispatch(getProducts(currentPage, keyword, precio));
-	}, [dispatch, error, alert, currentPage, keyword, precio])
+	}, [dispatch, error, currentPage, keyword, precio])
 
 	// Funcion para cambiar el numero de la pagina
 	function setCurrentPageNo(pageNumber){

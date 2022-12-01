@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import MetaData from '../layout/MetaData'
 import { clearErrors, login } from '../../actions/userActions'
 import { useDispatch, useSelector } from 'react-redux'
-import { useAlert } from 'react-alert'
+import { toast as alert } from 'react-hot-toast'
 
 const Login = () => {
     
@@ -12,7 +12,6 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const alert = useAlert();
     const { isAuthenticated, error, loading } = useSelector (state => state.auth)
 
     useEffect( () => {
@@ -25,7 +24,7 @@ const Login = () => {
             alert.error(error);
             dispatch(clearErrors)
         }
-    }, [dispatch, isAuthenticated, error, navigate, alert])
+    }, [dispatch, isAuthenticated, error, navigate])
 
     const submitHandler = (e) => {
         e.preventDefault();

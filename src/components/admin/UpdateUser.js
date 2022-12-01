@@ -2,8 +2,7 @@ import React, { Fragment, useState, useEffect } from 'react'
 
 import MetaData from '../layout/MetaData'
 import Sidebar from './Sidebar'
-
-import { useAlert } from 'react-alert'
+import {toast as alert} from 'react-hot-toast'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateUser, getUserDetails, clearErrors } from '../../actions/userActions'
 import { UPDATE_USER_RESET } from '../../constants/userConstants'
@@ -16,7 +15,6 @@ export const UpdateUser = () => {
     const [email, setEmail] = useState('')
     const [role, setRole] = useState('')
 
-    const alert = useAlert();
     const dispatch = useDispatch();
 
     const { error, isUpdated } = useSelector(state => state.user);
@@ -50,7 +48,7 @@ export const UpdateUser = () => {
             })
         }
 
-    }, [dispatch, alert, error, isUpdated, userId, user, navigate])
+    }, [dispatch, error, isUpdated, userId, user, navigate])
 
     const submitHandler = (e) => {
         e.preventDefault();

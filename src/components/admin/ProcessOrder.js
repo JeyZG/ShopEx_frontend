@@ -2,7 +2,7 @@ import React, { Fragment, useState, useEffect } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import MetaData from '../layout/MetaData'
 import Sidebar from './Sidebar'
-import { useAlert } from 'react-alert'
+import {toast as alert} from 'react-hot-toast'
 import { useDispatch, useSelector } from 'react-redux'
 import { getOrderDetails, updateOrder, clearErrors } from '../../actions/orderActions'
 import { UPDATE_ORDER_RESET } from '../../constants/orderConstants'
@@ -12,7 +12,6 @@ export const ProcessOrder = () => {
     const navigate = useNavigate();
     const params=useParams();
 
-    const alert = useAlert();
     const dispatch = useDispatch();
 
     const { loading, order = {} } = useSelector(state => state.orderDetails)
@@ -37,7 +36,7 @@ export const ProcessOrder = () => {
             dispatch({ type: UPDATE_ORDER_RESET })
         }
 
-    }, [dispatch, alert, error, isUpdated, orderId])
+    }, [dispatch, error, isUpdated, orderId])
 
 
     const updateOrderHandler = (id) => {

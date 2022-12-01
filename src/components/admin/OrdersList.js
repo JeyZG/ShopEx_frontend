@@ -3,14 +3,13 @@ import { Link, useNavigate } from 'react-router-dom'
 import { MDBCard, MDBCardBody, MDBCardHeader, MDBCardTitle, MDBDataTable } from 'mdbreact'
 import MetaData from '../layout/MetaData'
 import Sidebar from './Sidebar'
-import { useAlert } from 'react-alert'
+import {toast as alert} from 'react-hot-toast'
 import { useDispatch, useSelector } from 'react-redux'
 import { allOrders, deleteOrder, clearErrors } from '../../actions/orderActions'
 import { DELETE_ORDER_RESET } from '../../constants/orderConstants'
 
 export const OrdersList = () => {
     const navigate= useNavigate();
-    const alert = useAlert();
     const dispatch = useDispatch();
 
     const { loading, error, orders } = useSelector(state => state.allOrders);
@@ -30,7 +29,7 @@ export const OrdersList = () => {
             dispatch({ type: DELETE_ORDER_RESET })
         }
 
-    }, [dispatch, alert, error, isDeleted, navigate])
+    }, [dispatch, error, isDeleted, navigate])
 
 
     const deleteOrderHandler = (id) => {

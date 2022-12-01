@@ -1,14 +1,13 @@
 import React, { Fragment, useEffect } from 'react'
 import MetaData from "../layout/MetaData"
 import { MDBCard, MDBCardBody, MDBCardHeader, MDBCardTitle, MDBDataTable } from "mdbreact"
-import { useAlert } from "react-alert"
+import { toast as alert } from 'react-hot-toast'
 import { useDispatch, useSelector } from "react-redux"
 import { clearErrors, myOrders } from '../../actions/orderActions'
 import { Link } from "react-router-dom"
 
 export const ListOrder = () => {
     const { loading, error, orders } = useSelector(state => state.myOrders)
-    const alert = useAlert();
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -18,7 +17,7 @@ export const ListOrder = () => {
             alert.error(error)
             dispatch(clearErrors())
         }
-    }, [dispatch, alert, error])
+    }, [dispatch, error])
 
     const setOrders = () => {
         const data = {
