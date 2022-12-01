@@ -6,7 +6,7 @@ import { clearErrors, createOrder } from '../../actions/orderActions';
 import MetaData from '../layout/MetaData';
 import {toast as alert} from 'react-hot-toast'
 import CheckoutSteps from './CheckOutSteps';
-import CurrencyFormat from 'react-currency-format'
+import { NumericFormat } from 'react-number-format';
 
 export const Payment = () => {
     const navigate= useNavigate();
@@ -108,7 +108,7 @@ export const Payment = () => {
                                 type="submit"
                                 className="btn btn-block py-2"
                             >
-                                Pagar: <CurrencyFormat value={`${orderInfo && orderInfo.precioTotal}`} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <span>{value}</span>} />
+                                Pagar: <NumericFormat value={`${orderInfo && orderInfo.precioTotal}`} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <span>{value}</span>} />
                             </button>
 
                         </form>

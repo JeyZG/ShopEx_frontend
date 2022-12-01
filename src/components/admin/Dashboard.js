@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAdminProducts } from '../../actions/productsActions';
 import { allOrders } from '../../actions/orderActions';
 import { allUsers } from '../../actions/userActions';
-import CurrencyFormat from 'react-currency-format';
+import { NumericFormat } from 'react-number-format';
 
 export const Dashboard = () => {
     const dispatch = useDispatch();
@@ -47,7 +47,7 @@ export const Dashboard = () => {
                                                 <div className="text-center card-font-size">
                                                     Ventas Totales<br /> 
                                                     <b>
-                                                    <CurrencyFormat
+                                                    <NumericFormat
                                                         value={cantidadTotal && cantidadTotal.toFixed(2)}
                                                         displayType={"text"}
                                                         thousandSeparator={true}

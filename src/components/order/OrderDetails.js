@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect } from 'react'
 import { toast as alert } from 'react-hot-toast'
-import CurrencyFormat from 'react-currency-format';
+import { NumericFormat } from 'react-number-format';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams, Link } from 'react-router-dom'
 import { clearErrors, getOrderDetails } from '../../actions/orderActions';
@@ -41,7 +41,7 @@ export const OrderDetails = () => {
                                 <p><b>Email:</b> {user && user.email}</p>
                                 <p><b>Telefono:</b> {envioInfo && envioInfo.telefono}</p>
                                 <p className="mb-4"><b>Dirección:</b> {detalleEnvio}</p>
-                                <p><b>Pago Total:</b> <CurrencyFormat
+                                <p><b>Pago Total:</b> <NumericFormat
                                                         value={precioTotal}
                                                         displayType={"text"}
                                                         thousandSeparator={true}
@@ -77,7 +77,7 @@ export const OrderDetails = () => {
                                             </div>
 
                                             <div className="col-4 col-lg-2 mt-4 mt-lg-0">
-                                                <p><CurrencyFormat
+                                                <p><NumericFormat
                                                         value={item.precio}
                                                         displayType={"text"}
                                                         thousandSeparator={true}

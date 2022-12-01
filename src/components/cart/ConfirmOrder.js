@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate , Link} from 'react-router-dom'
 import MetaData from '../layout/MetaData'
 import CheckoutSteps from './CheckOutSteps';
-import CurrencyFormat from 'react-currency-format'
+import { NumericFormat } from 'react-number-format';
 
 export const ConfirmOrder = () => {
     
@@ -63,7 +63,7 @@ export const ConfirmOrder = () => {
 
 
                                         <div className="col-4 col-lg-4 mt-4 mt-lg-0">
-                                            <p>{item.quantity} x <CurrencyFormat value={item.precio} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <span>{value}</span>} /> = <b><CurrencyFormat value={(item.quantity * item.precio).toFixed(2)} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <span>{value}</span>} /></b>
+                                            <p>{item.quantity} x <NumericFormat value={item.precio} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <span>{value}</span>} /> = <b><NumericFormat value={(item.quantity * item.precio).toFixed(2)} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <span>{value}</span>} /></b>
                                             </p>
                                         </div>
 
@@ -78,13 +78,13 @@ export const ConfirmOrder = () => {
                         <div id="order_summary">
                             <h4>Resumen de la compra</h4>
                             <hr />
-                            <p>Subtotal:  <span className="order-summary-values"><CurrencyFormat value={precioItems} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <div>{value}</div>} /></span></p>
-                            <p>Costo de Envío: <span className="order-summary-values"><CurrencyFormat value={precioEnvio} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <div>{value}</div>} /></span></p>
-                            <p>Impuestos: <span className="order-summary-values"><CurrencyFormat value={precioImpuesto} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <div>{value}</div>} /></span></p>
+                            <p>Subtotal:  <span className="order-summary-values"><NumericFormat value={precioItems} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <span>{value}</span>} /></span></p>
+                            <p>Costo de Envío: <span className="order-summary-values"><NumericFormat value={precioEnvio} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <span>{value}</span>} /></span></p>
+                            <p>Impuestos: <span className="order-summary-values"><NumericFormat value={precioImpuesto} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <span>{value}</span>} /></span></p>
 
                             <hr />
 
-                            <p>Total: <span className="order-summary-values"><CurrencyFormat value={precioTotal} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <div>{value}</div>} /></span></p>
+                            <p>Total: <span className="order-summary-values"><NumericFormat value={precioTotal} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <span>{value}</span>} /></span></p>
 
                             <hr />
                             <button id="checkout_btn" className="btn btn-primary btn-block" onClick={processToPayment}>Continuar con el pago</button>

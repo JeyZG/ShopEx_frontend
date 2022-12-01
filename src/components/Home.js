@@ -7,7 +7,7 @@ import { toast as alert } from 'react-hot-toast'
 import Pagination from 'react-js-pagination'
 import Slider from 'rc-slider' // Documentacion: https://www.npmjs.com/package/rc-slider
 import 'rc-slider/assets/index.css'
-import CurrencyFormat from 'react-currency-format'
+import { NumericFormat } from 'react-number-format';
 
 
 export const Home = () => {
@@ -118,13 +118,14 @@ export const Home = () => {
 													</div>
 													<p className="card-text">{producto.marca}</p>
 													<p className="card-text">
-														<CurrencyFormat
-															value={producto.precio}
+														<NumericFormat 
+															value={producto.precio} 
 															displayType={"text"}
 															thousandSeparator={true}
-															prefix={"$"}
+															prefix={"$"} 
 															renderText={(value) => <span>{value}</span>}
 														/>
+														
 													</p>
 													<Link
 														to={`/producto/${producto._id}`}

@@ -7,7 +7,7 @@ import { NEW_REVIEW_RESET } from '../../constants/productsConstants'
 import { toast as alert } from 'react-hot-toast'
 import { Carousel } from 'react-bootstrap'
 import { addItemToCart } from '../../actions/cartActions'
-import CurrencyFormat from 'react-currency-format'
+import { NumericFormat } from 'react-number-format';
 import ListReviews from '../order/ListReviews'
 
 export const ProductDetails = () => {
@@ -142,7 +142,7 @@ export const ProductDetails = () => {
 							<span id="No_de_reviews" className='ml-2'>({product.numCalificaciones} Reviews)</span>
 							<hr />
 							<h3><p id="precio_producto">
-							<CurrencyFormat value={product.precio} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <div>{value}</div>} />
+							<NumericFormat value={product.precio} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <span>{value}</span>} />
 								</p>
 							</h3>
 							<div className="stockCounter d-inline">

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import { addItemToCart, removeItemFromCart } from '../../actions/cartActions'
 import MetaData from '../layout/MetaData'
-import CurrencyFormat from 'react-currency-format'
+import { NumericFormat } from 'react-number-format';
 
 
 export const Cart = () => {
@@ -66,7 +66,7 @@ export const Cart = () => {
 
 
                                             <div className="col-4 col-lg-2 mt-4 mt-lg-0">
-                                                <p id="card_item_price"><CurrencyFormat value={item.precio} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <div>{value}</div>} /></p>
+                                                <p id="card_item_price"><NumericFormat value={item.precio} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <span>{value}</span>} /></p>
                                             </div>
 
                                             <div className="col-4 col-lg-3 mt-4 mt-lg-0">
@@ -98,7 +98,7 @@ export const Cart = () => {
                                 <p>Productos:  <span className="order-summary-values">{cartItems.reduce((acc, item)=>(acc+Number(item.quantity)),0)} (Unidades)</span></p>
                                 <p>Valor total: 
                                     <span className="order-summary-values">
-                                    <CurrencyFormat value={cartItems.reduce((acc, item)=> acc+(item.quantity*item.precio),0).toFixed(2)} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <div>{value}</div>} />
+                                    <NumericFormat value={cartItems.reduce((acc, item)=> acc+(item.quantity*item.precio),0).toFixed(2)} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <span>{value}</span>} />
                                     </span>
                                 </p>
                                 

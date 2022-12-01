@@ -1,14 +1,11 @@
 import React, { Fragment, useEffect } from 'react'
 import { MDBCard, MDBCardBody, MDBCardHeader, MDBCardTitle, MDBDataTable } from 'mdbreact'
-//import { MDBCard, MDBCardBody, MDBCardHeader, MDBCardTitle, MDBDatatable } from 'mdb-react-ui-kit'
-//import { MDBDatatable } from 'mdb-react-ui-kit';
 import MetaData from '../layout/MetaData'
 import Sidebar from './Sidebar'
 import {toast as alert} from 'react-hot-toast'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from "react-router-dom"
 import { clearErrors, deleteProduct, getAdminProducts } from '../../actions/productsActions'
-//import CurrencyFormat from 'react-currency-format'
 
 export const ProductsList = () => {
     
@@ -71,7 +68,6 @@ export const ProductsList = () => {
         products.forEach(product => {
             data.rows.push({
                 nombre: product.nombre,
-                //precio: <CurrencyFormat value={product.precio} displayType={"text"} thousandSeparator={true} prefix={"$"} renderText={(value) => `${value}`}/>,
                 precio: `$ ${product.precio}`,
                 inventario: product.inventario,
                 vendedor: product.vendedor,

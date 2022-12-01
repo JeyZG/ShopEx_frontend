@@ -6,7 +6,7 @@ import {toast as alert} from 'react-hot-toast'
 import { useDispatch, useSelector } from 'react-redux'
 import { getOrderDetails, updateOrder, clearErrors } from '../../actions/orderActions'
 import { UPDATE_ORDER_RESET } from '../../constants/orderConstants'
-import CurrencyFormat from 'react-currency-format';
+import { NumericFormat } from 'react-number-format'
 
 export const ProcessOrder = () => {
     const navigate = useNavigate();
@@ -70,7 +70,7 @@ export const ProcessOrder = () => {
                                     <p><b>Email:</b> {user && user.email}</p>
                                     <p><b>Telefono:</b> {envioInfo && envioInfo.telefono}</p>
                                     <p className="mb-4"><b>Direccón: </b>{detallesEnvio}</p>
-                                    <p><b>Valor Total:</b> <CurrencyFormat
+                                    <p><b>Valor Total:</b> <NumericFormat
                                                         value={precioTotal}
                                                         displayType={"text"}
                                                         thousandSeparator={true}
@@ -105,7 +105,7 @@ export const ProcessOrder = () => {
 
 
                                                 <div className="col-4 col-lg-2 mt-4 mt-lg-0">
-                                                    <p><CurrencyFormat
+                                                    <p><NumericFormat
                                                         value={item.precio}
                                                         displayType={"text"}
                                                         thousandSeparator={true}
