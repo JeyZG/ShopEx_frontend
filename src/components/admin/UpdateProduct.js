@@ -234,7 +234,7 @@ export const UpdateProduct = () => {
 						{oldImagen &&
 							oldImagen.map((img) => (
 							<img
-								key={img}
+								key={img.url}
 								src={img.url}
 								alt={img.url}
 								className="mt-3 mr-2"
