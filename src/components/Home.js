@@ -41,7 +41,7 @@ export const Home = () => {
 						<MetaData title="Inicio"></MetaData>
 						<center>
 							<h1 className="mt-3" id="encabezado_productos">
-								Ultimos Productos
+								Nuestros productos mas nuevos
 							</h1>
 						</center>
 						<section id="productos" className="container mt-3">
